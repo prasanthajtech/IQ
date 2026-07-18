@@ -1,13 +1,852 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Google AI Studio App</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
-</html>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mahendran Prasanth | WordPress Developer Sri Lanka</title>
+  <meta name="description" content="Mahendran Prasanth - WordPress Developer, Web Designer, SEO Specialist and Forest Professional from Sri Lanka" />
+  <meta name="keywords" content="WordPress Developer Sri Lanka, Web Design, SEO, Website Development" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <!-- AOS Animation Library -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Roboto, system-ui, -apple-system, sans-serif;
+    }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: #f8fafc;
+      color: #0f172a;
+      overflow-x: hidden;
+    }
+
+    /* HEADER */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      padding: 18px 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(7, 27, 45, 0.92);
+      backdrop-filter: blur(12px);
+      z-index: 999;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+      transition: background 0.3s;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: 700;
+      color: white;
+      letter-spacing: 1px;
+      cursor: default;
+    }
+    .logo span {
+      color: #f4b942;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    nav a {
+      color: #e2e8f0;
+      text-decoration: none;
+      padding: 8px 18px;
+      font-weight: 500;
+      font-size: 1rem;
+      transition: 0.3s;
+      border-radius: 40px;
+      position: relative;
+      cursor: pointer;
+    }
+    nav a:hover,
+    nav a.active {
+      color: #f4b942;
+      background: rgba(244, 185, 66, 0.12);
+    }
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: 2px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0%;
+      height: 2px;
+      background: #f4b942;
+      transition: width 0.3s;
+    }
+    nav a:hover::after,
+    nav a.active::after {
+      width: 60%;
+    }
+
+    .menu {
+      display: none;
+      color: white;
+      font-size: 30px;
+      cursor: pointer;
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 130px 8% 80px;
+      background: linear-gradient(145deg, #0b2a3b, #064e3b);
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -30%;
+      right: -10%;
+      width: 700px;
+      height: 700px;
+      background: radial-gradient(circle, rgba(244, 185, 66, 0.08) 0%, transparent 70%);
+      border-radius: 50%;
+      animation: pulseGlow 8s ease-in-out infinite alternate;
+    }
+    @keyframes pulseGlow {
+      0% { transform: scale(1) translate(0, 0); opacity: 0.5; }
+      100% { transform: scale(1.2) translate(-40px, 30px); opacity: 1; }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+    .hero h1 {
+      font-size: 54px;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+    .hero h1 span {
+      background: linear-gradient(135deg, #f4b942, #facc15, #f4b942);
+      background-size: 200% 200%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: shimmer 4s ease-in-out infinite;
+    }
+    @keyframes shimmer {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    .hero h2 {
+      margin: 18px 0 12px;
+      color: #86efac;
+      font-weight: 400;
+      font-size: 28px;
+      min-height: 48px;
+    }
+    .hero p {
+      font-size: 20px;
+      line-height: 1.7;
+      max-width: 560px;
+      opacity: 0.9;
+    }
+    .btn-group {
+      margin-top: 30px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .btn {
+      display: inline-block;
+      padding: 14px 38px;
+      background: #22c55e;
+      color: white;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.3s;
+      box-shadow: 0 8px 20px rgba(34, 197, 94, 0.3);
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    .btn:hover {
+      background: #16a34a;
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 12px 28px rgba(34, 197, 94, 0.4);
+    }
+    .btn-outline {
+      background: transparent;
+      border: 2px solid white;
+      box-shadow: none;
+    }
+    .btn-outline:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: #f4b942;
+      color: #f4b942;
+      transform: translateY(-3px);
+    }
+
+    .profile-wrapper {
+      position: relative;
+      width: 320px;
+      height: 320px;
+      border-radius: 50%;
+      border: 8px solid #f4b942;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+      overflow: hidden;
+      background: #0f2a3a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: 0.4s;
+      cursor: pointer;
+      flex-shrink: 0;
+      animation: float 6s ease-in-out infinite;
+    }
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-12px); }
+      100% { transform: translateY(0px); }
+    }
+    .profile-wrapper:hover {
+      transform: scale(1.03) translateY(-4px);
+      border-color: #facc15;
+    }
+    .profile-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .profile-wrapper .placeholder-icon {
+      font-size: 100px;
+      color: #f4b942;
+      opacity: 0.7;
+    }
+    .profile-wrapper .upload-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(0, 0, 0, 0.6);
+      color: white;
+      text-align: center;
+      padding: 10px 0;
+      font-size: 0.9rem;
+      backdrop-filter: blur(4px);
+      opacity: 0;
+      transition: opacity 0.3s;
+      pointer-events: none;
+      border-radius: 0 0 50% 50% / 0 0 100% 100%;
+    }
+    .profile-wrapper:hover .upload-overlay {
+      opacity: 1;
+    }
+    .profile-wrapper input[type="file"] {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      cursor: pointer;
+      z-index: 10;
+    }
+    .profile-wrapper input[type="file"]::-webkit-file-upload-button {
+      display: none;
+    }
+
+    /* SECTIONS */
+    section {
+      padding: 90px 8%;
+    }
+
+    .title {
+      text-align: center;
+      font-size: 42px;
+      font-weight: 700;
+      margin-bottom: 50px;
+      letter-spacing: -0.5px;
+    }
+    .title span {
+      background: linear-gradient(135deg, #064e3b, #22c55e);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .content {
+      max-width: 800px;
+      margin: auto;
+      text-align: center;
+      line-height: 1.9;
+      font-size: 1.2rem;
+      color: #1e293b;
+    }
+
+    /* CARDS */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 30px;
+      margin-top: 20px;
+    }
+    .card {
+      background: white;
+      padding: 35px 25px;
+      border-radius: 28px;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
+      transition: 0.4s ease;
+      text-align: center;
+      border: 1px solid #e9edf2;
+      position: relative;
+      overflow: hidden;
+    }
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, #f4b942, #22c55e);
+      transform: scaleX(0);
+      transition: transform 0.4s;
+      transform-origin: left;
+    }
+    .card:hover::before {
+      transform: scaleX(1);
+    }
+    .card:hover {
+      transform: translateY(-14px);
+      box-shadow: 0 28px 50px rgba(0, 0, 0, 0.1);
+      border-color: #f4b942;
+    }
+    .card i {
+      font-size: 48px;
+      color: #064e3b;
+      margin-bottom: 15px;
+      background: #e8f5e9;
+      padding: 12px;
+      border-radius: 20px;
+      transition: 0.3s;
+    }
+    .card:hover i {
+      background: #f4b94220;
+      color: #f4b942;
+    }
+    .card h3 {
+      font-size: 1.6rem;
+      margin-bottom: 12px;
+      font-weight: 600;
+    }
+    .card p {
+      color: #334155;
+      line-height: 1.6;
+    }
+    .card .project-link {
+      display: inline-block;
+      margin-top: 16px;
+      color: #064e3b;
+      font-weight: 600;
+      text-decoration: none;
+      border-bottom: 2px solid #f4b942;
+      padding-bottom: 2px;
+      transition: 0.3s;
+    }
+    .card .project-link:hover {
+      color: #f4b942;
+      border-color: #064e3b;
+    }
+
+    /* SKILLS */
+    .skill {
+      margin: 30px 0;
+    }
+    .skill-label {
+      display: flex;
+      justify-content: space-between;
+      font-weight: 600;
+      margin-bottom: 8px;
+      font-size: 1.1rem;
+    }
+    .bar {
+      background: #e2e8f0;
+      height: 14px;
+      border-radius: 40px;
+      overflow: hidden;
+    }
+    .progress {
+      height: 100%;
+      background: linear-gradient(90deg, #22c55e, #16a34a);
+      border-radius: 40px;
+      width: 0%;
+      transition: 1.2s ease;
+    }
+
+    /* CONTACT */
+    .contact {
+      background: #071b2d;
+      color: white;
+      text-align: center;
+      border-radius: 50px 50px 0 0;
+      margin-top: 40px;
+      padding: 80px 8%;
+      position: relative;
+      overflow: hidden;
+    }
+    .contact::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      right: -100px;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(244, 185, 66, 0.06) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .contact h2 {
+      font-size: 42px;
+      font-weight: 700;
+    }
+    .contact p {
+      font-size: 1.2rem;
+      opacity: 0.8;
+      margin: 20px 0 30px;
+    }
+    .contact .btn {
+      background: #f4b942;
+      color: #071b2d;
+      box-shadow: 0 8px 20px rgba(244, 185, 66, 0.3);
+    }
+    .contact .btn:hover {
+      background: #e6a832;
+      transform: translateY(-3px) scale(1.02);
+    }
+
+    /* FOOTER */
+    footer {
+      background: #000;
+      color: #94a3b8;
+      text-align: center;
+      padding: 40px 20px;
+      font-size: 0.95rem;
+      line-height: 1.8;
+    }
+    footer span {
+      color: #f4b942;
+    }
+    .social-links a {
+      color: #94a3b8;
+      margin: 0 12px;
+      font-size: 22px;
+      transition: 0.3s;
+      display: inline-block;
+    }
+    .social-links a:hover {
+      color: #f4b942;
+      transform: scale(1.15) translateY(-3px);
+    }
+
+    /* WHATSAPP */
+    .whatsapp {
+      position: fixed;
+      right: 25px;
+      bottom: 25px;
+      background: #25D366;
+      color: white;
+      padding: 16px 22px;
+      border-radius: 60px;
+      text-decoration: none;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 8px 24px rgba(37, 211, 102, 0.4);
+      transition: 0.3s;
+      z-index: 999;
+      font-size: 1rem;
+    }
+    .whatsapp i {
+      font-size: 24px;
+    }
+    .whatsapp:hover {
+      transform: scale(1.08);
+      background: #1ebe5c;
+    }
+
+    /* MOBILE */
+    @media (max-width: 768px) {
+      .hero {
+        flex-direction: column;
+        text-align: center;
+        padding: 140px 6% 60px;
+      }
+      .hero h1 {
+        font-size: 36px;
+      }
+      .hero h2 {
+        font-size: 22px;
+      }
+      .hero p {
+        font-size: 1rem;
+        margin: 0 auto;
+      }
+      .profile-wrapper {
+        margin-top: 40px;
+        width: 220px;
+        height: 220px;
+      }
+      .profile-wrapper .placeholder-icon {
+        font-size: 70px;
+      }
+      nav {
+        display: none;
+        flex-direction: column;
+        background: rgba(7, 27, 45, 0.98);
+        backdrop-filter: blur(12px);
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        padding: 20px 0;
+        gap: 8px;
+        border-top: 1px solid #2d3f4f;
+      }
+      nav a {
+        padding: 12px 20px;
+        width: 100%;
+        text-align: center;
+        border-radius: 0;
+      }
+      nav a::after {
+        display: none;
+      }
+      .menu {
+        display: block;
+      }
+      .btn-group {
+        justify-content: center;
+      }
+      .title {
+        font-size: 32px;
+      }
+      .cards {
+        grid-template-columns: 1fr;
+      }
+      .whatsapp {
+        padding: 12px 18px;
+        font-size: 0.9rem;
+      }
+      .whatsapp i {
+        font-size: 20px;
+      }
+    }
+
+    .nav-open {
+      display: flex !important;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">Mahendran<span>.</span></div>
+    <nav id="navbar">
+      <a href="#home" class="active">Home</a>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="menu" id="menuToggle" aria-label="Menu">
+      <i class="fas fa-bars"></i>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-content" data-aos="fade-right" data-aos-duration="1000">
+      <h1>Hi, I'm <br /><span>Mahendran Prasanth</span></h1>
+      <h2 id="typing"></h2>
+      <p>I build fast, modern & SEO-friendly websites that help businesses grow.</p>
+      <div class="btn-group">
+        <a href="#projects" class="btn"><i class="fas fa-folder-open" style="margin-right:8px;"></i>My Portfolio</a>
+        <a href="#contact" class="btn btn-outline"><i class="fas fa-paper-plane" style="margin-right:8px;"></i>Contact</a>
+      </div>
+    </div>
+    <div data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
+      <div class="profile-wrapper" id="profileWrapper">
+        <input type="file" id="profileImageInput" accept="image/*" />
+        <img id="profileImage" src="" alt="Profile" style="display:none;" />
+        <i class="fas fa-user-circle placeholder-icon" id="placeholderIcon"></i>
+        <div class="upload-overlay"><i class="fas fa-camera"></i> Upload DP</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" data-aos="fade-up" data-aos-duration="800">
+    <h2 class="title"><span>About Me</span></h2>
+    <p class="content">
+      I am a Forest Extension Officer from Sri Lanka and a passionate WordPress Developer.
+      I combine environmental knowledge with modern technology to create websites,
+      education platforms and digital solutions that bridge nature, technology & people.
+    </p>
+    <div style="display:flex; justify-content:center; gap:20px; flex-wrap:wrap; margin-top:30px;">
+      <span style="background:#e2e8f0; padding:8px 22px; border-radius:40px; font-weight:500;"><i class="fas fa-leaf" style="color:#22c55e;"></i> Forest Professional</span>
+      <span style="background:#e2e8f0; padding:8px 22px; border-radius:40px; font-weight:500;"><i class="fas fa-code" style="color:#f4b942;"></i> WordPress Dev</span>
+      <span style="background:#e2e8f0; padding:8px 22px; border-radius:40px; font-weight:500;"><i class="fas fa-chart-line" style="color:#3b82f6;"></i> SEO Specialist</span>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services" style="background:#f1f5f9;" data-aos="fade-up" data-aos-duration="800">
+    <h2 class="title"><span>Services</span></h2>
+    <div class="cards">
+      <div class="card" data-aos="zoom-in" data-aos-delay="100">
+        <i class="fab fa-wordpress"></i>
+        <h3>WordPress Development</h3>
+        <p>Business websites, school websites, blogs and custom themes with speed & security.</p>
+      </div>
+      <div class="card" data-aos="zoom-in" data-aos-delay="200">
+        <i class="fas fa-paint-brush"></i>
+        <h3>Web Design</h3>
+        <p>Modern responsive website design for all devices – pixel perfect and user friendly.</p>
+      </div>
+      <div class="card" data-aos="zoom-in" data-aos-delay="300">
+        <i class="fas fa-rocket"></i>
+        <h3>SEO & Performance</h3>
+        <p>Google ranking improvement, speed optimization, and on-page SEO strategies.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section data-aos="fade-up" data-aos-duration="800">
+    <h2 class="title"><span>Skills</span></h2>
+    <div style="max-width:700px; margin:0 auto;">
+      <div class="skill">
+        <div class="skill-label"><span>WordPress</span> <span>95%</span></div>
+        <div class="bar"><div class="progress" style="width:95%;"></div></div>
+      </div>
+      <div class="skill">
+        <div class="skill-label"><span>HTML / CSS</span> <span>90%</span></div>
+        <div class="bar"><div class="progress" style="width:90%;"></div></div>
+      </div>
+      <div class="skill">
+        <div class="skill-label"><span>SEO</span> <span>85%</span></div>
+        <div class="bar"><div class="progress" style="width:85%;"></div></div>
+      </div>
+      <div class="skill">
+        <div class="skill-label"><span>JavaScript / React</span> <span>75%</span></div>
+        <div class="bar"><div class="progress" style="width:75%;"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS with live links -->
+  <section id="projects" style="background:#f1f5f9;" data-aos="fade-up" data-aos-duration="800">
+    <h2 class="title"><span>Projects</span></h2>
+    <div class="cards">
+      <div class="card" data-aos="flip-up" data-aos-delay="100">
+        <i class="fas fa-graduation-cap" style="color:#2563eb;"></i>
+        <h3>ELC Maths Academy</h3>
+        <p>Online education platform with interactive lessons & student dashboard.</p>
+        <a href="https://www.elemathsacademy.lk" target="_blank" class="project-link">Visit Site →</a>
+      </div>
+      <div class="card" data-aos="flip-up" data-aos-delay="200">
+        <i class="fas fa-school" style="color:#0d9488;"></i>
+        <h3>Kingston College</h3>
+        <p>School website with modern design, events & parent portal.</p>
+        <a href="https://www.kingstoncollegeedu.com" target="_blank" class="project-link">Visit Site →</a>
+      </div>
+      <div class="card" data-aos="flip-up" data-aos-delay="300">
+        <i class="fas fa-globe-asia" style="color:#f59e0b;"></i>
+        <h3>MannarHub</h3>
+        <p>Local information website promoting culture, tourism & community.</p>
+        <a href="https://www.mannarhub.site" target="_blank" class="project-link">Visit Site →</a>
+      </div>
+      <div class="card" data-aos="flip-up" data-aos-delay="400">
+        <i class="fas fa-newspaper" style="color:#7c3aed;"></i>
+        <h3>Tamilan Win</h3>
+        <p>News & lifestyle platform with engaging content and SEO focus.</p>
+        <a href="https://www.tamilanwin.lk" target="_blank" class="project-link">Visit Site →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="contact" data-aos="fade-up" data-aos-duration="800">
+    <h2>Let's Work Together</h2>
+    <p>Need a professional website? Contact me today and let's build something great.</p>
+    <a href="https://wa.me/947XXXXXXXX" class="btn"><i class="fab fa-whatsapp" style="margin-right:10px;"></i> Contact Me</a>
+    <div style="margin-top:40px; display:flex; justify-content:center; gap:20px; flex-wrap:wrap;">
+      <span><i class="fas fa-map-pin" style="color:#f4b942;"></i> Mannar, Sri Lanka</span>
+      <span><i class="fas fa-envelope" style="color:#f4b942;"></i> prasanth@example.com</span>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div style="margin-bottom:16px;">
+      <span>Mahendran Prasanth</span> · WordPress Developer · Sri Lanka
+    </div>
+    <div class="social-links">
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-linkedin-in"></i></a>
+      <a href="#"><i class="fab fa-github"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+    </div>
+    <div style="margin-top:16px; font-size:0.85rem;">© 2026 Mahendran Prasanth · Bridging Nature, Technology & People</div>
+  </footer>
+
+  <!-- WHATSAPP FLOATING -->
+  <a class="whatsapp" href="https://wa.me/947XXXXXXXX">
+    <i class="fab fa-whatsapp"></i> <span>Chat</span>
+  </a>
+
+  <!-- AOS Script -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      once: false,
+      mirror: true,
+      duration: 800,
+    });
+
+    // Typing effect
+    const words = [
+      "Forest Professional 🌿",
+      "WordPress Developer 💻",
+      "SEO Specialist 🚀",
+      "Digital Solutions Creator"
+    ];
+    let wordIndex = 0;
+    let charIndex = 0;
+    const typingEl = document.getElementById('typing');
+    let isDeleting = false;
+
+    function typeEffect() {
+      const currentWord = words[wordIndex];
+      if (!isDeleting) {
+        typingEl.textContent = currentWord.substring(0, charIndex + 1);
+        charIndex++;
+        if (charIndex === currentWord.length) {
+          isDeleting = true;
+          setTimeout(typeEffect, 2000);
+          return;
+        }
+        setTimeout(typeEffect, 120);
+      } else {
+        typingEl.textContent = currentWord.substring(0, charIndex - 1);
+        charIndex--;
+        if (charIndex === 0) {
+          isDeleting = false;
+          wordIndex = (wordIndex + 1) % words.length;
+          setTimeout(typeEffect, 500);
+          return;
+        }
+        setTimeout(typeEffect, 50);
+      }
+    }
+    typeEffect();
+
+    // Mobile menu toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const navbar = document.getElementById('navbar');
+    menuToggle.addEventListener('click', function(e) {
+      e.stopPropagation();
+      navbar.classList.toggle('nav-open');
+    });
+
+    // Make nav links clickable and close mobile menu
+    document.querySelectorAll('#navbar a').forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          targetElement.scrollIntoView({ behavior: 'smooth' });
+        }
+        // Close mobile menu
+        navbar.classList.remove('nav-open');
+        // Update active link
+        document.querySelectorAll('#navbar a').forEach(l => l.classList.remove('active'));
+        this.classList.add('active');
+      });
+    });
+
+    // Close mobile menu on outside click
+    document.addEventListener('click', function(event) {
+      if (!navbar.contains(event.target) && !menuToggle.contains(event.target)) {
+        navbar.classList.remove('nav-open');
+      }
+    });
+
+    // Profile image upload
+    const fileInput = document.getElementById('profileImageInput');
+    const profileImg = document.getElementById('profileImage');
+    const placeholderIcon = document.getElementById('placeholderIcon');
+
+    fileInput.addEventListener('change', function(e) {
+      const file = e.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(event) {
+          profileImg.src = event.target.result;
+          profileImg.style.display = 'block';
+          placeholderIcon.style.display = 'none';
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+
+    // Animate skill bars on scroll
+    const skillBars = document.querySelectorAll('.progress');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const bar = entry.target;
+          const width = bar.style.width;
+          bar.style.width = '0%';
+          setTimeout(() => {
+            bar.style.width = width;
+          }, 300);
+        }
+      });
+    }, { threshold: 0.4 });
+    skillBars.forEach(bar => observer.observe(bar));
+
+    // Active link highlight on scroll
+    const sections = document.querySelectorAll('section[id]');
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 150;
+        if (window.scrollY >= sectionTop) {
+          current = section.getAttribute('id');
+        }
+      });
+      document.querySelectorAll('#navbar a').forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === '#' + current) {
+          link.classList.add('active');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
