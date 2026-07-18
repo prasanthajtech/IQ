@@ -212,7 +212,6 @@
       align-items: center;
       justify-content: center;
       transition: 0.4s;
-      cursor: pointer;
       flex-shrink: 0;
       animation: float 6s ease-in-out infinite;
     }
@@ -230,43 +229,6 @@
       height: 100%;
       object-fit: cover;
       display: block;
-    }
-    .profile-wrapper .placeholder-icon {
-      font-size: 100px;
-      color: #f4b942;
-      opacity: 0.7;
-    }
-    .profile-wrapper .upload-overlay {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: rgba(0, 0, 0, 0.6);
-      color: white;
-      text-align: center;
-      padding: 10px 0;
-      font-size: 0.9rem;
-      backdrop-filter: blur(4px);
-      opacity: 0;
-      transition: opacity 0.3s;
-      pointer-events: none;
-      border-radius: 0 0 50% 50% / 0 0 100% 100%;
-    }
-    .profile-wrapper:hover .upload-overlay {
-      opacity: 1;
-    }
-    .profile-wrapper input[type="file"] {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      opacity: 0;
-      cursor: pointer;
-      z-index: 10;
-    }
-    .profile-wrapper input[type="file"]::-webkit-file-upload-button {
-      display: none;
     }
 
     /* SECTIONS */
@@ -510,9 +472,6 @@
         width: 220px;
         height: 220px;
       }
-      .profile-wrapper .placeholder-icon {
-        font-size: 70px;
-      }
       nav {
         display: none;
         flex-direction: column;
@@ -559,27 +518,6 @@
     .nav-open {
       display: flex !important;
     }
-
-    /* Upload status message */
-    .upload-status {
-      position: fixed;
-      bottom: 100px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: rgba(0,0,0,0.8);
-      color: white;
-      padding: 12px 28px;
-      border-radius: 50px;
-      font-size: 0.95rem;
-      z-index: 9999;
-      opacity: 0;
-      transition: opacity 0.4s;
-      pointer-events: none;
-      backdrop-filter: blur(8px);
-    }
-    .upload-status.show {
-      opacity: 1;
-    }
   </style>
 </head>
 <body>
@@ -597,12 +535,6 @@
     </div>
   </header>
 
-  <!-- Upload Status Message -->
-  <div class="upload-status" id="uploadStatus">
-    <i class="fas fa-check-circle" style="color:#22c55e; margin-right:10px;"></i>
-    Photo uploaded successfully!
-  </div>
-
   <!-- HERO -->
   <section class="hero" id="home">
     <div class="hero-content" data-aos="fade-right" data-aos-duration="1000">
@@ -615,12 +547,9 @@
       </div>
     </div>
     <div data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
-      <div class="profile-wrapper" id="profileWrapper">
-        <!-- File input for photo upload -->
-        <input type="file" id="profileImageInput" accept="image/*" />
-        <img id="profileImage" src="" alt="Profile" style="display:none;" />
-        <i class="fas fa-user-circle placeholder-icon" id="placeholderIcon"></i>
-        <div class="upload-overlay"><i class="fas fa-camera"></i> Upload DP</div>
+      <div class="profile-wrapper">
+        <!-- மெயின் ஃபோல்டரில் உள்ள profile.png இங்கிருந்து நேரடியாக லிங்க் செய்யப்பட்டுள்ளது -->
+        <img id="profileImage" src="profile.png" alt="Profile" onerror="this.onerror=null; this.src='https://via.placeholder.com/320?text=Upload+profile.png+to+main+folder';" />
       </div>
     </div>
   </section>
@@ -685,7 +614,7 @@
     </div>
   </section>
 
-  <!-- PROJECTS with live links -->
+  <!-- PROJECTS -->
   <section id="projects" style="background:#f1f5f9;" data-aos="fade-up" data-aos-duration="800">
     <h2 class="title"><span>Projects</span></h2>
     <div class="cards">
@@ -723,7 +652,7 @@
     <a href="https://wa.me/94773223611" class="btn"><i class="fab fa-whatsapp" style="margin-right:10px;"></i> Contact Me</a>
     <div style="margin-top:40px; display:flex; justify-content:center; gap:20px; flex-wrap:wrap;">
       <span><i class="fas fa-map-pin" style="color:#f4b942;"></i> Mannar, Sri Lanka</span>
-      <span><i class="fas fa-envelope" style="color:#f4b942;"></i> prasanth@example.com</span>
+      <span><i class="fas fa-envelope" style="color:#f4b942;"></i> prasanthaj96@gmail.com</span>
     </div>
   </section>
 
@@ -809,71 +738,19 @@
         if (targetElement) {
           targetElement.scrollIntoView({ behavior: 'smooth' });
         }
+        // Close mobile menu
         navbar.classList.remove('nav-open');
+        // Update active link
         document.querySelectorAll('#navbar a').forEach(l => l.classList.remove('active'));
         this.classList.add('active');
       });
     });
 
+    // Close mobile menu on outside click
     document.addEventListener('click', function(event) {
       if (!navbar.contains(event.target) && !menuToggle.contains(event.target)) {
         navbar.classList.remove('nav-open');
       }
-    });
-
-    // ============================================================
-    // PHOTO UPLOAD - "main folderla photo upload panra mathiri sei"
-    // User clicks the profile circle, selects an image, it appears.
-    // ============================================================
-    const fileInput = document.getElementById('profileImageInput');
-    const profileImg = document.getElementById('profileImage');
-    const placeholderIcon = document.getElementById('placeholderIcon');
-    const uploadStatus = document.getElementById('uploadStatus');
-
-    // When user selects a file
-    fileInput.addEventListener('change', function(e) {
-      const file = e.target.files[0];
-      if (file) {
-        // Validate file type
-        if (!file.type.startsWith('image/')) {
-          alert('Please select a valid image file (JPG, PNG, GIF, etc.)');
-          this.value = ''; // reset
-          return;
-        }
-        // Validate size (max 5MB)
-        if (file.size > 5 * 1024 * 1024) {
-          alert('Image size should be less than 5MB. Please compress your image.');
-          this.value = '';
-          return;
-        }
-
-        const reader = new FileReader();
-        reader.onload = function(event) {
-          // Show the uploaded image
-          profileImg.src = event.target.result;
-          profileImg.style.display = 'block';
-          placeholderIcon.style.display = 'none';
-
-          // Show success message
-          uploadStatus.textContent = '✅ Photo uploaded successfully!';
-          uploadStatus.classList.add('show');
-          setTimeout(() => {
-            uploadStatus.classList.remove('show');
-          }, 3000);
-        };
-        reader.onerror = function() {
-          alert('Error reading file. Please try again.');
-        };
-        reader.readAsDataURL(file);
-      }
-    });
-
-    // Trigger file input when clicking the profile wrapper (except if clicking the overlay)
-    document.getElementById('profileWrapper').addEventListener('click', function(e) {
-      // If the click is on the overlay text, still trigger the file input
-      // The file input covers the whole area, so it will trigger anyway.
-      // But we want to make sure it works even if user clicks on the image.
-      fileInput.click();
     });
 
     // Animate skill bars on scroll
