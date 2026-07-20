@@ -177,7 +177,6 @@
       opacity: 1;
     }
 
-    /* ===== HIDE CURSOR WHEN MODAL IS OPEN ===== */
     body.modal-open {
       cursor: default !important;
     }
@@ -642,7 +641,7 @@
     #projects { background: var(--bg-secondary); transition: background 0.4s ease; }
     #cv { background: var(--bg-primary); transition: background 0.4s ease; }
 
-    /* ===== CV SECTION ===== */
+    /* ===== CV SECTION - EDUCATION REMOVED ===== */
     .cv-section {
       background: var(--bg-secondary);
       padding: 80px 8%;
@@ -671,7 +670,6 @@
       backdrop-filter: blur(8px);
     }
 
-    /* CV Header */
     .cv-header {
       text-align: center;
       padding-bottom: 30px;
@@ -721,7 +719,6 @@
       margin-right: 6px;
     }
 
-    /* CV Body Grid */
     .cv-body {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -842,7 +839,6 @@
       border-bottom-color: #f4b942;
     }
 
-    /* ===== QR CODE "SCAN ME" SECTION ===== */
     .cv-qr-area {
       text-align: center;
       margin-top: 40px;
@@ -918,7 +914,6 @@
       justify-content: center;
     }
 
-    /* ===== QR CODE MODAL / POPUP ===== */
     .qr-modal {
       display: none;
       position: fixed;
@@ -990,8 +985,6 @@
       box-shadow: 0 8px 40px rgba(124, 58, 237, 0.15);
       margin-bottom: 16px;
     }
-
-    /* ===== CV PREVIEW SECTION IN MODAL ===== */
     .qr-modal-content .cv-preview-link {
       display: inline-block;
       margin-top: 10px;
@@ -1007,8 +1000,6 @@
       color: #a78bfa;
       border-bottom-color: #a78bfa;
     }
-
-    /* ===== CV PREVIEW IMAGE CONTAINER ===== */
     .cv-preview-container {
       display: none;
       margin-top: 16px;
@@ -1338,7 +1329,7 @@
     </div>
   </section>
 
-  <!-- ===== CV SECTION ===== -->
+  <!-- ===== CV SECTION - EDUCATION REMOVED ===== -->
   <section class="cv-section" id="cv" data-aos="fade-up" data-aos-duration="800">
     <h2 class="title"><span>My Resume</span> / CV</h2>
     
@@ -1355,7 +1346,7 @@
         </div>
       </div>
 
-      <!-- CV Body -->
+      <!-- CV Body - Education Removed, Better Alignment -->
       <div class="cv-body">
         <!-- Left Column -->
         <div class="cv-left">
@@ -1406,7 +1397,7 @@
           </div>
         </div>
 
-        <!-- Right Column -->
+        <!-- Right Column - Only Experience (Education Removed) -->
         <div class="cv-right">
           <!-- Professional Experience -->
           <div class="cv-block" data-aos="fade-left">
@@ -1437,31 +1428,6 @@
               <div class="desc">
                 <i class="fas fa-check-circle"></i> Complete website development, SEO, Canva design
               </div>
-            </div>
-          </div>
-
-          <!-- Education -->
-          <div class="cv-block" data-aos="fade-left">
-            <h3><i class="fas fa-graduation-cap"></i> Education</h3>
-            
-            <div class="cv-item">
-              <strong>🎓 Diploma in Agriculture & Plantation Management</strong>
-              <span class="sub">Wayamba University, Sri Lanka</span>
-            </div>
-            
-            <div class="cv-item">
-              <strong>🎓 NVQ Level 4 - Construction Site Supervision</strong>
-              <span class="sub">Technical College, Mannar</span>
-            </div>
-            
-            <div class="cv-item">
-              <strong>🎓 Diploma in Computing & Software</strong>
-              <span class="sub">Technical College, Mannar</span>
-            </div>
-            
-            <div class="cv-item">
-              <strong>🎓 Diploma in English</strong>
-              <span class="sub">Don Bosco Training College</span>
             </div>
           </div>
         </div>
@@ -1526,39 +1492,60 @@
     </div>
   </div>
 
-  <!-- PROJECTS -->
+  <!-- ===== PROJECTS SECTION - IMPROVED ARRANGEMENT ===== -->
   <section id="projects" data-aos="fade-up" data-aos-duration="800">
-    <h2 class="title"><span>Projects</span></h2>
-    <div class="cards">
-      <div class="card" data-aos="flip-up" data-aos-delay="100">
-        <i class="fas fa-graduation-cap" style="color:#2563eb;"></i>
-        <h3>ELC Maths Academy</h3>
-        <p>Online education platform with interactive lessons & student dashboard.</p>
-        <a href="https://www.elcmathsacademy.lk/" target="_blank" class="project-link">Visit Site →</a>
-      </div>
-      <div class="card" data-aos="flip-up" data-aos-delay="200">
-        <i class="fas fa-school" style="color:#0d9488;"></i>
-        <h3>Kingston College</h3>
-        <p>School website with modern design, events & parent portal.</p>
-        <a href="https://www.kingstoncollegeedu.com" target="_blank" class="project-link">Visit Site →</a>
-      </div>
-      <div class="card" data-aos="flip-up" data-aos-delay="300">
-        <i class="fas fa-globe-asia" style="color:#f59e0b;"></i>
-        <h3>MannarHub</h3>
-        <p>Local information website promoting culture, tourism & community.</p>
-        <a href="https://www.mannarhub.site" target="_blank" class="project-link">Visit Site →</a>
-      </div>
-      <div class="card" data-aos="flip-up" data-aos-delay="400">
-        <i class="fas fa-newspaper" style="color:#7c3aed;"></i>
-        <h3>Tamilan Win</h3>
-        <p>News & lifestyle platform with engaging content and SEO focus.</p>
-        <a href="https://www.tamilanwin.lk" target="_blank" class="project-link">Visit Site →</a>
-      </div>
-      <div class="card" data-aos="flip-up" data-aos-delay="500">
-        <i class="fas fa-newspaper" style="color:#ec4899;"></i>
-        <h3>TamilLK</h3>
-        <p>News & information platform with engaging content and SEO focus.</p>
-        <a href="https://www.tamillk.com" target="_blank" class="project-link">Visit Site →</a>
+    <h2 class="title"><span>My Projects</span></h2>
+    <div style="max-width:1100px; margin:0 auto;">
+      <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap:30px;">
+        <!-- Project 1 -->
+        <div class="card" data-aos="flip-up" data-aos-delay="100" style="background:var(--bg-card); backdrop-filter:blur(8px); padding:35px 25px; border-radius:24px; transition:0.4s ease; text-align:center; border:1px solid var(--border-color); position:relative; overflow:hidden;">
+          <div style="position:absolute; top:0; left:0; width:100%; height:3px; background:linear-gradient(90deg, #f4b942, #7c3aed); transform:scaleX(0); transition:transform 0.5s; transform-origin:left;"></div>
+          <i class="fas fa-graduation-cap" style="font-size:44px; color:#2563eb; margin-bottom:15px; background:rgba(37,99,235,0.08); padding:14px; border-radius:18px; transition:0.3s; display:inline-block;"></i>
+          <h3 style="font-size:1.5rem; margin-bottom:12px; font-weight:600; color:var(--text-primary);">ELC Maths Academy</h3>
+          <p style="color:var(--text-muted); line-height:1.6;">Online education platform with interactive lessons &amp; student dashboard.</p>
+          <a href="https://www.elcmathsacademy.lk/" target="_blank" style="display:inline-block; margin-top:16px; color:#f4b942; font-weight:600; text-decoration:none; border-bottom:2px solid rgba(244,185,66,0.3); padding-bottom:2px; transition:0.3s;">Visit Site →</a>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="card" data-aos="flip-up" data-aos-delay="200" style="background:var(--bg-card); backdrop-filter:blur(8px); padding:35px 25px; border-radius:24px; transition:0.4s ease; text-align:center; border:1px solid var(--border-color); position:relative; overflow:hidden;">
+          <div style="position:absolute; top:0; left:0; width:100%; height:3px; background:linear-gradient(90deg, #f4b942, #7c3aed); transform:scaleX(0); transition:transform 0.5s; transform-origin:left;"></div>
+          <i class="fas fa-school" style="font-size:44px; color:#0d9488; margin-bottom:15px; background:rgba(13,148,136,0.08); padding:14px; border-radius:18px; transition:0.3s; display:inline-block;"></i>
+          <h3 style="font-size:1.5rem; margin-bottom:12px; font-weight:600; color:var(--text-primary);">Kingston College</h3>
+          <p style="color:var(--text-muted); line-height:1.6;">School website with modern design, events &amp; parent portal.</p>
+          <a href="https://www.kingstoncollegeedu.com" target="_blank" style="display:inline-block; margin-top:16px; color:#f4b942; font-weight:600; text-decoration:none; border-bottom:2px solid rgba(244,185,66,0.3); padding-bottom:2px; transition:0.3s;">Visit Site →</a>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="card" data-aos="flip-up" data-aos-delay="300" style="background:var(--bg-card); backdrop-filter:blur(8px); padding:35px 25px; border-radius:24px; transition:0.4s ease; text-align:center; border:1px solid var(--border-color); position:relative; overflow:hidden;">
+          <div style="position:absolute; top:0; left:0; width:100%; height:3px; background:linear-gradient(90deg, #f4b942, #7c3aed); transform:scaleX(0); transition:transform 0.5s; transform-origin:left;"></div>
+          <i class="fas fa-globe-asia" style="font-size:44px; color:#f59e0b; margin-bottom:15px; background:rgba(245,158,11,0.08); padding:14px; border-radius:18px; transition:0.3s; display:inline-block;"></i>
+          <h3 style="font-size:1.5rem; margin-bottom:12px; font-weight:600; color:var(--text-primary);">MannarHub</h3>
+          <p style="color:var(--text-muted); line-height:1.6;">Local information website promoting culture, tourism &amp; community.</p>
+          <a href="https://www.mannarhub.site" target="_blank" style="display:inline-block; margin-top:16px; color:#f4b942; font-weight:600; text-decoration:none; border-bottom:2px solid rgba(244,185,66,0.3); padding-bottom:2px; transition:0.3s;">Visit Site →</a>
+        </div>
+
+        <!-- Project 4 -->
+        <div class="card" data-aos="flip-up" data-aos-delay="400" style="background:var(--bg-card); backdrop-filter:blur(8px); padding:35px 25px; border-radius:24px; transition:0.4s ease; text-align:center; border:1px solid var(--border-color); position:relative; overflow:hidden;">
+          <div style="position:absolute; top:0; left:0; width:100%; height:3px; background:linear-gradient(90deg, #f4b942, #7c3aed); transform:scaleX(0); transition:transform 0.5s; transform-origin:left;"></div>
+          <i class="fas fa-newspaper" style="font-size:44px; color:#7c3aed; margin-bottom:15px; background:rgba(124,58,237,0.08); padding:14px; border-radius:18px; transition:0.3s; display:inline-block;"></i>
+          <h3 style="font-size:1.5rem; margin-bottom:12px; font-weight:600; color:var(--text-primary);">Tamilan Win</h3>
+          <p style="color:var(--text-muted); line-height:1.6;">News &amp; lifestyle platform with engaging content and SEO focus.</p>
+          <a href="https://www.tamilanwin.lk" target="_blank" style="display:inline-block; margin-top:16px; color:#f4b942; font-weight:600; text-decoration:none; border-bottom:2px solid rgba(244,185,66,0.3); padding-bottom:2px; transition:0.3s;">Visit Site →</a>
+        </div>
+
+        <!-- Project 5 -->
+        <div class="card" data-aos="flip-up" data-aos-delay="500" style="background:var(--bg-card); backdrop-filter:blur(8px); padding:35px 25px; border-radius:24px; transition:0.4s ease; text-align:center; border:1px solid var(--border-color); position:relative; overflow:hidden;">
+          <div style="position:absolute; top:0; left:0; width:100%; height:3px; background:linear-gradient(90deg, #f4b942, #7c3aed); transform:scaleX(0); transition:transform 0.5s; transform-origin:left;"></div>
+          <i class="fas fa-newspaper" style="font-size:44px; color:#ec4899; margin-bottom:15px; background:rgba(236,72,153,0.08); padding:14px; border-radius:18px; transition:0.3s; display:inline-block;"></i>
+          <h3 style="font-size:1.5rem; margin-bottom:12px; font-weight:600; color:var(--text-primary);">TamilLK</h3>
+          <p style="color:var(--text-muted); line-height:1.6;">News &amp; information platform with engaging content and SEO focus.</p>
+          <a href="https://www.tamillk.com" target="_blank" style="display:inline-block; margin-top:16px; color:#f4b942; font-weight:600; text-decoration:none; border-bottom:2px solid rgba(244,185,66,0.3); padding-bottom:2px; transition:0.3s;">Visit Site →</a>
+        </div>
+
+        <!-- Project 6 - Empty card for alignment -->
+        <div style="background:transparent; padding:35px 25px; border-radius:24px; text-align:center; border:1px dashed var(--border-color); display:flex; align-items:center; justify-content:center; min-height:200px;">
+          <span style="color:var(--text-muted); font-size:0.95rem;">✨ More Projects Coming Soon</span>
+        </div>
       </div>
     </div>
   </section>
@@ -1854,7 +1841,6 @@
     function generateQR() {
       const cvURL = 'https://prasanthajtech.github.io/IQ/';
       
-      // Generate QR in main section
       const qrContainer = document.getElementById('qrcode');
       if (qrContainer) {
         qrContainer.innerHTML = '';
@@ -1868,7 +1854,6 @@
         });
       }
 
-      // Generate QR in modal
       const modalQrContainer = document.getElementById('modal-qrcode');
       if (modalQrContainer) {
         modalQrContainer.innerHTML = '';
@@ -1891,7 +1876,6 @@
       document.body.classList.add('modal-open');
       document.body.style.overflow = 'hidden';
       
-      // Regenerate QR with larger size
       const modalQrContainer = document.getElementById('modal-qrcode');
       if (modalQrContainer) {
         modalQrContainer.innerHTML = '';
@@ -1905,7 +1889,6 @@
         });
       }
       
-      // Reset preview when opening
       document.getElementById('cvPreviewContainer').classList.remove('active');
     }
 
@@ -1923,14 +1906,12 @@
       container.classList.toggle('active');
     }
 
-    // Close modal on outside click
     document.getElementById('qrModal').addEventListener('click', function(e) {
       if (e.target === this) {
         closeQRModal();
       }
     });
 
-    // Close modal on Escape key
     document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape') {
         closeQRModal();
@@ -1944,7 +1925,6 @@
       setTimeout(generateQR, 500);
     });
 
-    // Also regenerate when theme changes (QR colors)
     themeToggle.addEventListener('click', function() {
       setTimeout(generateQR, 300);
     });
