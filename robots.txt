@@ -1,6 +1,6 @@
 # ============================================================
 # ROBOTS.TXT FOR PRASANTH AJ TECH
-# Website: Mahendran Prasanth - AI-Powered WordPress Developer
+# Website: prasanthaj.store - AI-Powered WordPress Developer
 # Last Updated: 2026
 # ============================================================
 
@@ -10,7 +10,7 @@ Allow: /
 # ============================================================
 # SITEMAP LOCATION
 # ============================================================
-Sitemap: https://prasanthtech.com/sitemap.xml
+Sitemap: https://prasanthaj.store/sitemap.xml
 
 # ============================================================
 # DISALLOW - ADMIN & SYSTEM PATHS
@@ -111,4 +111,4 @@ Allow: /
 # ============================================================
 # HOST (for Yandex)
 # ============================================================
-Host: https://prasanthtech.com
+Host: https://prasanthaj.store
