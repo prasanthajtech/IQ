@@ -1304,7 +1304,7 @@
     </div>
   </section>
 
-  <!-- ===== CV SECTION - WITH QR CODE "SCAN ME" ONLY ===== -->
+  <!-- ===== CV SECTION ===== -->
   <section class="cv-section" id="cv" data-aos="fade-up" data-aos-duration="800">
     <h2 class="title"><span>My Resume</span> / CV</h2>
     
@@ -1405,6 +1405,34 @@
               </div>
             </div>
           </div>
+
+          <!-- Education -->
+          <div class="cv-block" data-aos="fade-left">
+            <h3><i class="fas fa-graduation-cap"></i> Education</h3>
+            
+            <div class="cv-item">
+              <strong>🎓 Diploma in Agriculture & Plantation Management</strong>
+              <span class="sub">Wayamba University, Sri Lanka</span>
+            </div>
+            
+            <div class="cv-item">
+              <strong>🎓 NVQ Level 4 - Construction Site Supervision</strong>
+              <span class="sub">Technical College, Mannar</span>
+            </div>
+            
+            <div class="cv-item">
+              <strong>🎓 Diploma in Computing & Software</strong>
+              <span class="sub">Technical College, Mannar</span>
+            </div>
+            
+            <div class="cv-item">
+              <strong>🎓 Diploma in English</strong>
+              <span class="sub">Don Bosco Training College</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <!-- CV Footer -->
       <div class="cv-footer">
         <div class="slogan">
@@ -1420,11 +1448,11 @@
       </div>
     </div>
 
-    <!-- ===== QR CODE "SCAN ME" SECTION - NO DOWNLOAD BUTTONS ===== -->
+    <!-- ===== QR CODE "SCAN ME" SECTION ===== -->
     <div class="cv-qr-area" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
       <span class="qr-icon"><i class="fas fa-qrcode"></i></span>
       <h3>📱 <span>Scan Me</span></h3>
-      <p class="sub-text">Scan this QR code to view & download my CV instantly on your phone</p>
+      <p class="sub-text">Scan this QR code to view my CV instantly on your phone</p>
       
       <!-- QR Code Container -->
       <div id="qrcode"></div>
@@ -1451,7 +1479,7 @@
       <p style="color:var(--text-muted); font-size:0.85rem; margin-top:4px;">
         <i class="fas fa-camera" style="color:#8b5cf6;"></i> Use your phone's camera to scan
       </p>
-      <a href="#" class="cv-preview-link" onclick="alert('📄 Your CV will open here!'); return false;">
+      <a href="https://prasanthajtech.github.io/IQ/" target="_blank" class="cv-preview-link">
         <i class="fas fa-eye"></i> Preview CV Online
       </a>
     </div>
@@ -1780,10 +1808,10 @@
     });
 
     // ============================================================
-    // 7. QR CODE GENERATION
+    // 7. QR CODE GENERATION - CORRECT URL
     // ============================================================
     function generateQR() {
-      // Change this URL to your GitHub Pages URL
+      // CORRECT URL - Your GitHub Pages
       const cvURL = 'https://prasanthajtech.github.io/IQ/';
       
       // Generate QR in main section
@@ -1826,7 +1854,7 @@
       if (modalQrContainer) {
         modalQrContainer.innerHTML = '';
         new QRCode(modalQrContainer, {
-          text: 'https://prasanthaj.store/cv.pdf',
+          text: 'https://prasanthajtech.github.io/IQ/',
           width: 220,
           height: 220,
           colorDark: '#0a0f1a',
